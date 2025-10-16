@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9B090945-0F36-4DBB-AA2C-A5766777B081}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIs", "APIs", "{C554FB1F-434E-4545-AF62-3FAABF958A94}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Admin", "Admin", "{6B0C9538-DD0F-4437-BB11-B6CF53A2CB7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasks.Manager.Admin.Api", "src\APIs\Admin\Tasks.Manager.Admin.Api\Tasks.Manager.Admin.Api.csproj", "{741B80FC-89FF-4AC8-BD2F-6BDE5B41C309}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{CB0DC404-6EFB-4134-B19B-DC1358CBE843}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasks.Manager.Domain", "src\Shared\Tasks.Manager.Domain\Tasks.Manager.Domain.csproj", "{B980F616-DC42-4FFD-907B-45FD1C85066D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasks.Manager.Admin.Application", "src\APIs\Admin\Tasks.Manager.Admin.Application\Tasks.Manager.Admin.Application.csproj", "{5A276AF5-B2B6-43CA-80C2-9143934FDB95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasks.Manager.Infrastructure", "src\Shared\Tasks.Manager.Infrastructure\Tasks.Manager.Infrastructure.csproj", "{D72B1085-FF96-4647-947A-614FD345432B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{741B80FC-89FF-4AC8-BD2F-6BDE5B41C309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{741B80FC-89FF-4AC8-BD2F-6BDE5B41C309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{741B80FC-89FF-4AC8-BD2F-6BDE5B41C309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{741B80FC-89FF-4AC8-BD2F-6BDE5B41C309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B980F616-DC42-4FFD-907B-45FD1C85066D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B980F616-DC42-4FFD-907B-45FD1C85066D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B980F616-DC42-4FFD-907B-45FD1C85066D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B980F616-DC42-4FFD-907B-45FD1C85066D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A276AF5-B2B6-43CA-80C2-9143934FDB95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A276AF5-B2B6-43CA-80C2-9143934FDB95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A276AF5-B2B6-43CA-80C2-9143934FDB95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A276AF5-B2B6-43CA-80C2-9143934FDB95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D72B1085-FF96-4647-947A-614FD345432B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D72B1085-FF96-4647-947A-614FD345432B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D72B1085-FF96-4647-947A-614FD345432B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D72B1085-FF96-4647-947A-614FD345432B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C554FB1F-434E-4545-AF62-3FAABF958A94} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{6B0C9538-DD0F-4437-BB11-B6CF53A2CB7D} = {C554FB1F-434E-4545-AF62-3FAABF958A94}
+		{741B80FC-89FF-4AC8-BD2F-6BDE5B41C309} = {6B0C9538-DD0F-4437-BB11-B6CF53A2CB7D}
+		{CB0DC404-6EFB-4134-B19B-DC1358CBE843} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{B980F616-DC42-4FFD-907B-45FD1C85066D} = {CB0DC404-6EFB-4134-B19B-DC1358CBE843}
+		{5A276AF5-B2B6-43CA-80C2-9143934FDB95} = {6B0C9538-DD0F-4437-BB11-B6CF53A2CB7D}
+		{D72B1085-FF96-4647-947A-614FD345432B} = {CB0DC404-6EFB-4134-B19B-DC1358CBE843}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C58DE7B5-A299-4AAD-996A-72D4177347FC}
+	EndGlobalSection
+EndGlobal
