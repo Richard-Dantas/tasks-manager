@@ -1,0 +1,31 @@
+networks:
+  taskmanagerapp:
+
+services:
+  appdb:
+    container_name: app-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - 8002:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=senha123!
+    networks:
+      - taskmanagerapp
+  tasks.manager.admin.api:
+    container_name: task-manager-admin-api
+    image: ${DOCKER_REGISTRY-}tasksmanageradminapi
+    build:
+      context: .
+      dockerfile: src/APIs/Admin/Tasks.Manager.Admin.Api/Dockerfile
+    ports:
+      - 8001:8081
+      - 8002:8080
+    depends_on:
+      - appdb
+    environment:
+      - DB_HOST=appdb
+      - DB_NAME=TaskManagerApp
+      - DB_SA_PASSWORD=senha123!
+    networks:
+      - taskmanagerapp
