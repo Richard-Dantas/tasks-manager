@@ -12,4 +12,12 @@ public static class WebApplicationBuilderExtensions
         var db = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
         db.Database.EnsureCreated();
     }
+
+    public static void EnsureSeedData(this WebApplication app)
+    {
+        using var scope = app.Services.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+
+        context.Seed();
+    }
 }

@@ -20,7 +20,7 @@ services:
       dockerfile: src/APIs/Admin/Tasks.Manager.Admin.Api/Dockerfile
     ports:
       - 8001:8081
-      - 8002:8080
+      - 8003:8080
     depends_on:
       - appdb
     environment:

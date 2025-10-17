@@ -10,6 +10,7 @@ public static class WebApplicationExtensions
         ConfigurePathBase(app);
 
         app.EnsureDatabaseCreated();
+        app.EnsureSeedData();
 
         if (app.Environment.IsDevelopment())
         {

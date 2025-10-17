@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Tasks.Manager.Admin.Api.Infra.Configurations;
+using Tasks.Manager.Admin.Application.UseCases.Project.Create;
+using Tasks.Manager.Admin.Application.UseCases.TaskItem.Create;
 using Tasks.Manager.Infrastructure.DependencyInjection;
 
 namespace Tasks.Manager.Admin.Api.Extensions;
@@ -31,11 +33,23 @@ public static class ServiceCollectionExtensions
             .AddEndpointsApiExplorer();
 
         services
+            .AddUsecases()
+            .AddRepositories();
+
+        services
             .AddSwagger()
             .AddCorsConfiguration()
             .AddSqlServerConfiguration(configuration);
 
         services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerGenOptions>();
+
+        return services;
+    }
+
+    private static IServiceCollection AddUsecases(this IServiceCollection services)
+    {
+        services.AddScoped<ICreateProjectUseCase, CreateProjectUseCase>();
+        services.AddScoped<ICreateTaskItemUseCase, CreateTaskItemUseCase>();
 
         return services;
     }

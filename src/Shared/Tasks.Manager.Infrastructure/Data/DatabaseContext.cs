@@ -30,6 +30,30 @@ public class DatabaseContext : DbContext
 
         modelBuilder.Entity<ProjectUser>()
             .HasKey(pu => new { pu.ProjectId, pu.UserId });
+
+        modelBuilder.Entity<ProjectUser>()
+            .HasOne(pu => pu.Project)
+            .WithMany(p => p.Members)
+            .HasForeignKey(pu => pu.ProjectId);
+
+        modelBuilder.Entity<ProjectUser>()
+            .HasOne(pu => pu.User)
+            .WithMany()
+            .HasForeignKey(pu => pu.UserId);
+
+        modelBuilder.Entity<Project>()
+            .HasMany(p => p.Tasks)
+            .WithOne(t => t.Project)
+            .HasForeignKey(t => t.ProjectId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<TaskItem>()
+            .Property(t => t.Id)
+            .ValueGeneratedNever();
+
+        modelBuilder.Entity<Project>()
+            .Navigation(p => p.Tasks)
+            .UsePropertyAccessMode(PropertyAccessMode.Field);
     }
 
     public DbSet<User> Users { get; set; }

@@ -14,9 +14,18 @@ public class Project : BaseEntity
 
     public IReadOnlyCollection<ProjectUser> Members => _members.AsReadOnly();
 
+    public Project(string name, string? description)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentException("O nome do projeto é obrigatório.", nameof(name));
+
+        Name = name;
+        Description = description;
+    }
+
     public void AddTask(string title, string? description, DateTime? dueDate, Guid? assignedToUserId = null)
     {
-        var task = new TaskItem(title, description, assignedToUserId);
+        var task = new TaskItem(title, description, Id, assignedToUserId);
         _tasks.Add(task);
     }
 

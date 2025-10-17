@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\Tasks.Manager.Infrastructure\Tasks.Manager.Infrastructure.csproj" />
+    <ProjectReference Include="..\Tasks.Manager.Admin.Application\Tasks.Manager.Admin.Application.csproj" />
   </ItemGroup>
 
 </Project>

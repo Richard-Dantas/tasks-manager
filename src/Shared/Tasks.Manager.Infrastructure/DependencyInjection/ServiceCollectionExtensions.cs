@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Tasks.Manager.Domain.Repositories;
 using Tasks.Manager.Infrastructure.Data;
+using Tasks.Manager.Infrastructure.Persistence.SqlServer.Repositories;
 
 namespace Tasks.Manager.Infrastructure.DependencyInjection;
 
@@ -19,6 +21,13 @@ public static class ServiceCollectionExtensions
 
         services.AddDbContext<DatabaseContext>(options =>
             options.UseSqlServer(connectionString));
+
+        return services;
+    }
+
+    public static IServiceCollection AddRepositories(this IServiceCollection services)
+    {
+        services.AddScoped<IProjectRepository, ProjectRepository>();
 
         return services;
     }
