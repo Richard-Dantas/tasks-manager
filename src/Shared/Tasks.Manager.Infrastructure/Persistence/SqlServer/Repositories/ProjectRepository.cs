@@ -29,15 +29,13 @@ public class ProjectRepository : IProjectRepository
         await _projects.AddAsync(project, cancellationToken);
     }
 
+    public void Remove(Project project)
+    {
+        _projects.Remove(project);
+    }
+
     public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        var entries = _context.ChangeTracker.Entries()
-            .Select(e => new { e.Entity.GetType().Name, e.State })
-            .ToList();
-
-        foreach (var e in entries)
-            Console.WriteLine($"{e.Name} -> {e.State}");
-
         await _context.SaveChangesAsync(cancellationToken);
     }
 }

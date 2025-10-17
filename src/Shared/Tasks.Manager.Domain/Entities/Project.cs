@@ -1,4 +1,6 @@
-﻿namespace Tasks.Manager.Domain.Entities;
+﻿using Tasks.Manager.Domain.DomainObjects.Enums;
+
+namespace Tasks.Manager.Domain.Entities;
 
 public class Project : BaseEntity
 {
@@ -23,9 +25,12 @@ public class Project : BaseEntity
         Description = description;
     }
 
-    public void AddTask(string title, string? description, DateTime? dueDate, Guid? assignedToUserId = null)
+    public void AddTask(string title, string? description, TaskPriority priority, DateTime? dueDate, Guid? assignedToUserId = null)
     {
-        var task = new TaskItem(title, description, Id, assignedToUserId);
+        if (_tasks.Count >= 20)
+            throw new InvalidOperationException($"O projeto já possui o número máximo de 20 tarefas.");
+
+        var task = new TaskItem(title, description, priority, Id, assignedToUserId);
         _tasks.Add(task);
     }
 
@@ -35,5 +40,15 @@ public class Project : BaseEntity
             throw new InvalidOperationException("Usuário já faz parte do projeto.");
 
         _members.Add(new ProjectUser(userId));
+    }
+
+    public void EnsureCanBeDeleted()
+    {
+        bool hasPendingTasks = _tasks.Any(t => t.Status == TaskState.Pendente);
+
+        if (hasPendingTasks)
+            throw new InvalidOperationException(
+                "O projeto não pode ser removido enquanto houver tarefas pendentes. " +
+                "Conclua ou remova as tarefas antes de prosseguir.");
     }
 }

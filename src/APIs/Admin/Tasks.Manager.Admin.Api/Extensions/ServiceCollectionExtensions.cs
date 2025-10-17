@@ -3,6 +3,7 @@ using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Tasks.Manager.Admin.Api.Infra.Configurations;
 using Tasks.Manager.Admin.Application.UseCases.Project.Create;
+using Tasks.Manager.Admin.Application.UseCases.Project.Delete;
 using Tasks.Manager.Admin.Application.UseCases.TaskItem.Create;
 using Tasks.Manager.Infrastructure.DependencyInjection;
 
@@ -49,6 +50,7 @@ public static class ServiceCollectionExtensions
     private static IServiceCollection AddUsecases(this IServiceCollection services)
     {
         services.AddScoped<ICreateProjectUseCase, CreateProjectUseCase>();
+        services.AddScoped<IDeleteProjectUseCase, DeleteProjectUseCase>();
         services.AddScoped<ICreateTaskItemUseCase, CreateTaskItemUseCase>();
 
         return services;

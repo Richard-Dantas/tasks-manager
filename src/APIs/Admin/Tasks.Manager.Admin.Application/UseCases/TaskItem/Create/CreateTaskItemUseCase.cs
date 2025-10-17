@@ -9,7 +9,7 @@ public class CreateTaskItemUseCase(IProjectRepository _projectRepository) : ICre
         var project = await _projectRepository.GetByIdAsync(request.ProjectId)
             ?? throw new InvalidOperationException("Projeto não encontrado.");
 
-        project.AddTask(request.Title, request.Description, DateTime.UtcNow.AddDays(3), request.AssignedToUserId);
+        project.AddTask(request.Title, request.Description, request.Priority, DateTime.UtcNow.AddDays(3), request.AssignedToUserId);
 
         await _projectRepository.SaveChangesAsync();
     }
