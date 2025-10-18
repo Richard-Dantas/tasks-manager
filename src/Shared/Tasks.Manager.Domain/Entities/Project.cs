@@ -34,12 +34,35 @@ public class Project : BaseEntity
         _tasks.Add(task);
     }
 
+    public void UpdateTask(
+    Guid taskId,
+    string title,
+    string description,
+    TaskPriority priority,
+    TaskState status,
+    Guid? assignedToUserId)
+    {
+        var task = Tasks.FirstOrDefault(t => t.Id == taskId)
+            ?? throw new InvalidOperationException("Tarefa não encontrada neste projeto.");
+
+        task.Update(title, description, priority, status, assignedToUserId);
+    }
+
     public void AddMember(Guid userId)
     {
         if (_members.Any(m => m.UserId == userId))
             throw new InvalidOperationException("Usuário já faz parte do projeto.");
 
         _members.Add(new ProjectUser(userId));
+    }
+
+    public void RemoveTask(Guid taskId)
+    {
+        var task = _tasks.FirstOrDefault(t => t.Id == taskId);
+        if (task == null)
+            throw new InvalidOperationException("Tarefa não encontrada.");
+
+        _tasks.Remove(task);
     }
 
     public void EnsureCanBeDeleted()

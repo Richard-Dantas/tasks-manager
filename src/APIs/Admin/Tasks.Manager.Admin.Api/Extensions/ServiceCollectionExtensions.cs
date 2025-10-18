@@ -4,7 +4,11 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using Tasks.Manager.Admin.Api.Infra.Configurations;
 using Tasks.Manager.Admin.Application.UseCases.Project.Create;
 using Tasks.Manager.Admin.Application.UseCases.Project.Delete;
+using Tasks.Manager.Admin.Application.UseCases.Project.List;
 using Tasks.Manager.Admin.Application.UseCases.TaskItem.Create;
+using Tasks.Manager.Admin.Application.UseCases.TaskItem.List;
+using Tasks.Manager.Admin.Application.UseCases.TaskItem.Remove;
+using Tasks.Manager.Admin.Application.UseCases.TaskItem.Update;
 using Tasks.Manager.Infrastructure.DependencyInjection;
 
 namespace Tasks.Manager.Admin.Api.Extensions;
@@ -51,7 +55,12 @@ public static class ServiceCollectionExtensions
     {
         services.AddScoped<ICreateProjectUseCase, CreateProjectUseCase>();
         services.AddScoped<IDeleteProjectUseCase, DeleteProjectUseCase>();
+        services.AddScoped<IListProjectUseCase, ListProjectUseCase>();
+
         services.AddScoped<ICreateTaskItemUseCase, CreateTaskItemUseCase>();
+        services.AddScoped<IListTaskItemUseCase, ListTaskItemUseCase>();
+        services.AddScoped<IUpdateTaskItemUseCase, UpdateTaskItemUseCase>();
+        services.AddScoped<IRemoveTaskItemUseCase, RemoveTaskItemUseCase>();
 
         return services;
     }

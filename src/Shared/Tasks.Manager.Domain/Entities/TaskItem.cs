@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using Tasks.Manager.Domain.DomainObjects.Enums;
+﻿using Tasks.Manager.Domain.DomainObjects.Enums;
 
 namespace Tasks.Manager.Domain.Entities;
 
@@ -19,6 +18,15 @@ public class TaskItem : BaseEntity
         Description = description;
         Priority = priority;
         ProjectId = projectId;
+        AssignedToUserId = assignedToUserId;
+    }
+
+    public void Update(string title, string description, TaskPriority priority, TaskState status, Guid? assignedToUserId)
+    {
+        Title = title;
+        Description = description;
+        Priority = priority;
+        Status = status;
         AssignedToUserId = assignedToUserId;
     }
 

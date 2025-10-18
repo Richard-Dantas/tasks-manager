@@ -7,5 +7,6 @@ public interface IProjectRepository
     Task<Project?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
     Task AddAsync(Project project, CancellationToken cancellationToken = default);
     void Remove(Project project);
+    Task<List<Project>> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken = default);
     Task SaveChangesAsync(CancellationToken cancellationToken = default);
 }

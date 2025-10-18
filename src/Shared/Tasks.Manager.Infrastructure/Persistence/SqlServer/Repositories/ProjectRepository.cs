@@ -34,6 +34,15 @@ public class ProjectRepository : IProjectRepository
         _projects.Remove(project);
     }
 
+    public async Task<List<Project>> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken = default)
+    {
+        return await _projects
+            .Include(p => p.Tasks)
+            .Include(p => p.Members)
+            .Where(p => p.Members.Any(m => m.UserId == userId))
+            .ToListAsync(cancellationToken);
+    }
+
     public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
     {
         await _context.SaveChangesAsync(cancellationToken);
