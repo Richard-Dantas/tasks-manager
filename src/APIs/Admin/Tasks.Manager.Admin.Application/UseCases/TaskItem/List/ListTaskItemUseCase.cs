@@ -17,6 +17,13 @@ public class ListTaskItemUseCase(IProjectRepository _projectRepository) : IListT
             Priority = t.Priority,
             Status = t.Status,
             AssignedToUserId = t.AssignedToUserId,
+            Comments = [.. t.Comments.Select(c => new TaskCommentResponse
+            {
+                Id = c.Id,
+                Content = c.Content,
+                AuthorUserId = c.UserId,
+                CreatedAt = c.CreatedDate
+            })]
         }).ToList();
 
         return taskItems;

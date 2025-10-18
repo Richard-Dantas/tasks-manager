@@ -9,4 +9,5 @@ public class UpdateTaskItemRequest
     public TaskPriority Priority { get; set; } = default!;
     public TaskState Status { get; set; } = default!;
     public Guid? AssignedToUserId { get; set; }
+    public string? Comment { get; set; }
 }

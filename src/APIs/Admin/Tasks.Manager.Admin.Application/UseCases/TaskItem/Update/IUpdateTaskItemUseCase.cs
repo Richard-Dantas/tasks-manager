@@ -2,5 +2,5 @@
 
 public interface IUpdateTaskItemUseCase
 {
-    Task ExecuteAsync(Guid projectId, Guid taskId, UpdateTaskItemRequest request);
+    Task ExecuteAsync(Guid projectId, Guid taskId, UpdateTaskItemRequest request, Guid modifiedByUserId);
 }

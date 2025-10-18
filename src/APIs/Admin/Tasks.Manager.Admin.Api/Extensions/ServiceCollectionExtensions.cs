@@ -5,6 +5,7 @@ using Tasks.Manager.Admin.Api.Infra.Configurations;
 using Tasks.Manager.Admin.Application.UseCases.Project.Create;
 using Tasks.Manager.Admin.Application.UseCases.Project.Delete;
 using Tasks.Manager.Admin.Application.UseCases.Project.List;
+using Tasks.Manager.Admin.Application.UseCases.Report.Get;
 using Tasks.Manager.Admin.Application.UseCases.TaskItem.Create;
 using Tasks.Manager.Admin.Application.UseCases.TaskItem.List;
 using Tasks.Manager.Admin.Application.UseCases.TaskItem.Remove;
@@ -61,6 +62,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IListTaskItemUseCase, ListTaskItemUseCase>();
         services.AddScoped<IUpdateTaskItemUseCase, UpdateTaskItemUseCase>();
         services.AddScoped<IRemoveTaskItemUseCase, RemoveTaskItemUseCase>();
+
+        services.AddScoped<IGetReportUseCase, GetReportUseCase>();
 
         return services;
     }

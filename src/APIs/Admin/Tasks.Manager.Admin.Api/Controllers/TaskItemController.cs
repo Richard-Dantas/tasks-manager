@@ -59,10 +59,11 @@ public class TaskItemController(
     public async Task<IActionResult> UpdateTaskAsync(
     Guid projectId,
     Guid taskId,
+    Guid userId,
     [FromBody] UpdateTaskItemRequest request,
     [FromServices] IUpdateTaskItemUseCase useCase)
     {
-        await _updateTaskItemUseCase.ExecuteAsync(projectId, taskId, request);
+        await _updateTaskItemUseCase.ExecuteAsync(projectId, taskId, request, userId);
         return Ok();
     }
 

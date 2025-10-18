@@ -34,18 +34,21 @@ public class Project : BaseEntity
         _tasks.Add(task);
     }
 
-    public void UpdateTask(
+    public TaskItem UpdateTask(
     Guid taskId,
     string title,
     string description,
     TaskPriority priority,
     TaskState status,
-    Guid? assignedToUserId)
+    Guid? assignedToUserId, 
+    Guid modifiedByUserId)
     {
         var task = Tasks.FirstOrDefault(t => t.Id == taskId)
             ?? throw new InvalidOperationException("Tarefa não encontrada neste projeto.");
 
-        task.Update(title, description, priority, status, assignedToUserId);
+        task.Update(title, description, priority, status, assignedToUserId, modifiedByUserId);
+
+        return task;
     }
 
     public void AddMember(Guid userId)

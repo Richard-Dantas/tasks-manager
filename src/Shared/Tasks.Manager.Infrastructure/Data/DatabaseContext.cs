@@ -47,17 +47,47 @@ public class DatabaseContext : DbContext
             .HasForeignKey(t => t.ProjectId)
             .OnDelete(DeleteBehavior.Cascade);
 
+        modelBuilder.Entity<Project>()
+            .Navigation(p => p.Tasks)
+            .UsePropertyAccessMode(PropertyAccessMode.Field);
+
         modelBuilder.Entity<TaskItem>()
             .Property(t => t.Id)
             .ValueGeneratedNever();
 
-        modelBuilder.Entity<Project>()
-            .Navigation(p => p.Tasks)
+        modelBuilder.Entity<TaskItem>()
+            .HasMany(t => t.History)
+            .WithOne()
+            .HasForeignKey(h => h.TaskId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<TaskItem>()
+            .HasMany(t => t.Comments)
+            .WithOne()
+            .HasForeignKey(c => c.TaskId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<TaskItem>()
+            .Navigation(t => t.History)
             .UsePropertyAccessMode(PropertyAccessMode.Field);
+
+        modelBuilder.Entity<TaskItem>()
+            .Navigation(t => t.Comments)
+            .UsePropertyAccessMode(PropertyAccessMode.Field);
+
+        modelBuilder.Entity<TaskHistory>()
+            .Property(t => t.Id)
+            .ValueGeneratedNever();
+
+        modelBuilder.Entity<TaskComment>()
+            .Property(t => t.Id)
+            .ValueGeneratedNever();
     }
 
     public DbSet<User> Users { get; set; }
     public DbSet<TaskItem> TaskItems { get; set; }
     public DbSet<Project> Projects { get; set; }
     public DbSet<ProjectUser> ProjectUsers { get; set; }
+    public DbSet<TaskHistory> TaskHistories { get; set; }
+
 }
