@@ -16,6 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\APIs\Admin\Tasks.Manager.Admin.Application\Tasks.Manager.Admin.Application.csproj" />
+    <ProjectReference Include="..\..\src\Shared\Tasks.Manager.Domain\Tasks.Manager.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 
