@@ -6,7 +6,6 @@ public class UpdateTaskItemRequest
 {
     public string Title { get; set; } = default!;
     public string Description { get; set; } = default!;
-    public TaskPriority Priority { get; set; } = default!;
     public TaskState Status { get; set; } = default!;
     public Guid? AssignedToUserId { get; set; }
     public string? Comment { get; set; }

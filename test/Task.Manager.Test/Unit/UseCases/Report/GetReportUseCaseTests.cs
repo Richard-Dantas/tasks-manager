@@ -75,7 +75,6 @@ public class GetReportUseCaseTests
             task.Update(
                 task.Title,
                 task.Description,
-                task.Priority,
                 TaskState.Concluida,
                 task.AssignedToUserId,
                 userId

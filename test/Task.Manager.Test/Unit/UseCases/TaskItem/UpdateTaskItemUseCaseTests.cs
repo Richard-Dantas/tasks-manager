@@ -32,7 +32,6 @@ public class UpdateTaskItemUseCaseTests
         {
             Title = "Título Atualizado",
             Description = "Descrição Atualizada",
-            Priority = TaskPriority.Alta,
             Status = TaskState.Concluida,
             AssignedToUserId = assignedUserId,
             Comment = null
@@ -54,7 +53,6 @@ public class UpdateTaskItemUseCaseTests
 
         Assert.Equal(request.Title, updatedTask.Title);
         Assert.Equal(request.Description, updatedTask.Description);
-        Assert.Equal(request.Priority, updatedTask.Priority);
         Assert.Equal(request.Status, updatedTask.Status);
         Assert.Equal(request.AssignedToUserId, updatedTask.AssignedToUserId);
 
@@ -78,7 +76,6 @@ public class UpdateTaskItemUseCaseTests
         {
             Title = "Título Atualizado",
             Description = "Descrição Atualizada",
-            Priority = TaskPriority.Alta,
             Status = TaskState.Em_Desenvolvimento,
             AssignedToUserId = assignedUserId,
             Comment = "Comentário de atualização"
@@ -118,7 +115,6 @@ public class UpdateTaskItemUseCaseTests
         {
             Title = "Título",
             Description = "Descrição",
-            Priority = TaskPriority.Media,
             Status = TaskState.Em_Desenvolvimento,
             AssignedToUserId = Guid.NewGuid()
         };
@@ -150,7 +146,6 @@ public class UpdateTaskItemUseCaseTests
         {
             Title = "Título",
             Description = "Descrição",
-            Priority = TaskPriority.Media,
             Status = TaskState.Em_Desenvolvimento,
             AssignedToUserId = Guid.NewGuid()
         };

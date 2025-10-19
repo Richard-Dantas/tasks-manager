@@ -38,7 +38,6 @@ public class Project : BaseEntity
     Guid taskId,
     string title,
     string description,
-    TaskPriority priority,
     TaskState status,
     Guid? assignedToUserId, 
     Guid modifiedByUserId)
@@ -46,7 +45,7 @@ public class Project : BaseEntity
         var task = Tasks.FirstOrDefault(t => t.Id == taskId)
             ?? throw new InvalidOperationException("Tarefa não encontrada neste projeto.");
 
-        task.Update(title, description, priority, status, assignedToUserId, modifiedByUserId);
+        task.Update(title, description, status, assignedToUserId, modifiedByUserId);
 
         return task;
     }

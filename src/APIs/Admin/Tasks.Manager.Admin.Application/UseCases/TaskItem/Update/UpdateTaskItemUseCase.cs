@@ -14,7 +14,6 @@ public class UpdateTaskItemUseCase(IProjectRepository _projectRepository) : IUpd
             taskId,
             request.Title,
             request.Description,
-            request.Priority,
             request.Status,
             request.AssignedToUserId,
             modifiedByUserId

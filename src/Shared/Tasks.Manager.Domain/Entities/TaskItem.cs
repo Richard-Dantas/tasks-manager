@@ -29,7 +29,7 @@ public class TaskItem : BaseEntity
         AssignedToUserId = assignedToUserId;
     }
 
-    public void Update(string title, string description, TaskPriority priority, TaskState status, Guid? assignedToUserId, Guid modifiedByUserId)
+    public void Update(string title, string description, TaskState status, Guid? assignedToUserId, Guid modifiedByUserId)
     {
         var changes = new Dictionary<string, object>();
 
@@ -43,12 +43,6 @@ public class TaskItem : BaseEntity
         {
             changes[nameof(Description)] = new { Old = Description, New = description };
             Description = description;
-        }
-
-        if (priority != Priority)
-        {
-            changes[nameof(Priority)] = new { Old = Priority.ToString(), New = priority.ToString() };
-            Priority = priority;
         }
 
         if (status != Status)
